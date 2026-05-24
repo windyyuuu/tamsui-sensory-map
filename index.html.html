@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百年淡水，聽見時光低語｜淡水感官任務地圖</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --gold:#C9A84C;--gold-light:#E8D5A0;--gold-dark:#8B6914;
+    --ink:#1A1410;--ink-mid:#3D2E1E;
+    --parchment:#F7F0E3;--parchment-dark:#EDE0C4;
+    --red:#8B1A1A;--teal:#1D6B6B;--slate:#4A5568;
+  }
+  body{background:var(--parchment);color:var(--ink);font-family:'Noto Sans TC',sans-serif;overflow-x:hidden;}
+
+  .hero{background:var(--ink);padding:56px 40px 48px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(201,168,76,0.08) 39px,rgba(201,168,76,0.08) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(201,168,76,0.08) 39px,rgba(201,168,76,0.08) 40px);}
+  .hero-eyebrow{font-size:11px;font-weight:300;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;position:relative;}
+  .hero-title-zh{font-family:'Noto Serif TC',serif;font-size:clamp(36px,6vw,64px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;position:relative;letter-spacing:0.05em;}
+  .hero-title-zh span{color:var(--gold);}
+  .hero-title-en{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,2vw,17px);color:rgba(255,255,255,0.45);margin-bottom:28px;position:relative;letter-spacing:0.08em;}
+  .hero-divider{width:48px;height:1px;background:var(--gold);margin:0 auto 20px;position:relative;}
+  .hero-sub{font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;position:relative;font-weight:300;}
+
+  .nav-tabs{display:flex;background:var(--ink-mid);border-bottom:2px solid var(--gold-dark);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
+  .nav-tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{flex:1;min-width:100px;padding:14px 16px;background:none;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:300;color:rgba(255,255,255,0.45);letter-spacing:0.06em;transition:all 0.25s;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+  .tab-btn .tab-en{display:block;font-size:9px;letter-spacing:0.12em;opacity:0.6;margin-top:2px;font-style:italic;font-family:'Playfair Display',serif;}
+  .tab-btn:hover{color:var(--gold-light);}
+  .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(201,168,76,0.07);font-weight:500;}
+
+  .content-area{max-width:900px;margin:0 auto;padding:40px 24px 60px;}
+  .route-panel{display:none;}
+  .route-panel.active{display:block;}
+
+  .concept-intro{margin-bottom:32px;}
+  .concept-intro p{font-size:14px;line-height:1.9;color:var(--ink-mid);margin-bottom:14px;font-weight:300;text-align:justify;}
+  .concept-intro p strong{font-weight:500;color:var(--ink);}
+
+  .callout{border-left:3px solid var(--gold);background:#fff;padding:16px 20px;border-radius:0 6px 6px 0;margin:20px 0;font-size:13px;line-height:1.8;color:var(--ink-mid);font-style:italic;}
+
+  .three-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+  .layer-card{background:#fff;border:0.5px solid var(--parchment-dark);border-radius:8px;padding:18px 16px;text-align:center;}
+  .layer-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700;line-height:1;margin-bottom:6px;}
+  .layer-title{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  .layer-desc{font-size:11px;line-height:1.7;color:var(--slate);font-weight:300;}
+
+  .sense-section-title{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:var(--ink);margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--gold-dark);}
+
+  .sense-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+  .sense-card{display:grid;grid-template-columns:80px 1fr;background:#fff;border:0.5px solid var(--parchment-dark);border-radius:8px;overflow:hidden;}
+  .sense-label{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 8px;gap:4px;}
+  .sense-zh{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;}
+  .sense-en{font-size:9px;letter-spacing:0.1em;font-style:italic;font-family:'Playfair Display',serif;opacity:0.7;}
+  .sense-body{padding:16px 20px;border-left:0.5px solid var(--parchment-dark);}
+  .sense-body p{font-size:13px;line-height:1.8;color:var(--ink-mid);font-weight:300;text-align:justify;}
+  .sense-body p+p{margin-top:8px;}
+
+  .s-sight .sense-label{background:#F5E0E0;}.s-sight .sense-zh{color:#8B1A1A;}.s-sight .sense-en{color:#8B1A1A;}
+  .s-sound .sense-label{background:#E8EAF0;}.s-sound .sense-zh{color:#3D4A6B;}.s-sound .sense-en{color:#3D4A6B;}
+  .s-smell .sense-label{background:#E0EFEF;}.s-smell .sense-zh{color:#1D4A4A;}.s-smell .sense-en{color:#1D4A4A;}
+  .s-taste .sense-label{background:#E0EFE0;}.s-taste .sense-zh{color:#2A4A1D;}.s-taste .sense-en{color:#2A4A1D;}
+  .s-touch .sense-label{background:#F5EDD0;}.s-touch .sense-zh{color:#6B4A10;}.s-touch .sense-en{color:#6B4A10;}
+
+  .route-header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gold-dark);}
+  .route-badge{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;border:1.5px solid currentColor;flex-shrink:0;}
+  .route-badge .badge-letter{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1;}
+  .route-badge .badge-sub{font-size:9px;letter-spacing:0.1em;font-weight:300;margin-top:2px;}
+  .route-a .route-badge{color:var(--red);}
+  .route-b .route-badge{color:var(--teal);}
+  .route-c .route-badge{color:var(--gold-dark);}
+  .route-title{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+  .route-title-en{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--slate);margin-bottom:10px;}
+  .route-meta{display:flex;gap:12px;flex-wrap:wrap;}
+  .meta-chip{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid rgba(74,85,104,0.3);letter-spacing:0.04em;color:var(--slate);}
+
+  .sense-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:var(--parchment-dark);border-radius:8px;}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-mid);}
+  .legend-dot{width:8px;height:8px;border-radius:50%;}
+
+  .mission-card{display:grid;grid-template-columns:72px 1fr;border:0.5px solid var(--parchment-dark);border-radius:8px;margin-bottom:10px;background:#fff;overflow:hidden;transition:box-shadow 0.2s;}
+  .mission-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.07);}
+  .mission-sense{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;gap:4px;border-right:0.5px solid var(--parchment-dark);}
+  .sense-icon-text{font-size:10px;font-weight:500;letter-spacing:0.06em;color:var(--ink);}
+  .sense-icon-en{font-size:8px;letter-spacing:0.1em;color:var(--slate);font-style:italic;font-family:'Playfair Display',serif;}
+  .ms-sight{background:#FDF5F5;}.ms-sound{background:#F4F5FA;}.ms-smell{background:#F0F8F8;}.ms-taste{background:#F0F8F0;}.ms-touch{background:#FDF8EF;}
+  .mission-body{padding:14px 18px;}
+  .mission-step{font-size:10px;font-weight:500;letter-spacing:0.12em;color:var(--slate);opacity:0.6;margin-bottom:3px;}
+  .mission-location{font-family:'Noto Serif TC',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:1px;}
+  .mission-location-en{font-size:10px;letter-spacing:0.1em;color:var(--slate);margin-bottom:8px;font-style:italic;}
+  .mission-task{font-size:12px;line-height:1.75;color:#444;font-weight:300;white-space:pre-line;}
+  .mission-answer{margin-top:8px;padding:7px 12px;background:var(--parchment);border-left:2px solid var(--gold);border-radius:0 4px 4px 0;font-size:11px;color:var(--ink-mid);line-height:1.6;}
+  .mission-answer strong{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);display:block;margin-bottom:2px;font-weight:500;}
+
+  .slogan-block{background:var(--ink);border-radius:12px;padding:36px 32px;text-align:center;margin-top:32px;}
+  .slogan-zh{font-family:'Noto Serif TC',serif;font-size:26px;font-weight:900;color:#fff;letter-spacing:0.06em;margin-bottom:10px;}
+  .slogan-zh span{color:var(--gold);}
+  .slogan-en{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.45);letter-spacing:0.06em;}
+
+  @media(max-width:600px){
+    .hero{padding:40px 20px 36px;}
+    .content-area{padding:28px 16px 48px;}
+    .three-layers{grid-template-columns:1fr;}
+    .route-header{grid-template-columns:1fr;}
+    .sense-card{grid-template-columns:64px 1fr;}
+    .mission-card{grid-template-columns:60px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">2026 城市品牌創新提案 · 搗淡鬼 × 新北市</div>
+  <div class="hero-title-zh">百年淡水，<span>聽見時光低語</span></div>
+  <div class="hero-title-en">A Century of Tamsui — Hear the Whisper of Time</div>
+  <div class="hero-divider"></div>
+  <div class="hero-sub">老街新生 × 城市永續 · 淡水感官任務地圖</div>
+</div>
+
+<nav class="nav-tabs">
+  <button class="tab-btn active" onclick="switchTab('concept')">提案概念<span class="tab-en">Concept</span></button>
+  <button class="tab-btn" onclick="switchTab('route-a')">路線 A｜老街歷史<span class="tab-en">Route A</span></button>
+  <button class="tab-btn" onclick="switchTab('route-b')">路線 B｜八里渡船<span class="tab-en">Route B</span></button>
+  <button class="tab-btn" onclick="switchTab('route-c')">路線 C｜淡江大橋<span class="tab-en">Route C</span></button>
+</nav>
+
+<div class="content-area">
+
+  <div id="tab-concept" class="route-panel active">
+    <div class="concept-intro">
+      <p>許多人去過淡水，卻說不清楚淡水是什麼感覺。他們記得夕陽，記得魚酥的香氣，記得老街的人潮——但這些碎片彼此沒有連結，只是一次普通的週末出遊。</p>
+      <p>淡水擁有台灣密度最高的歷史資產群：荷蘭稜堡、英國領事館、清代礮台、日式宿舍與閩南街屋，在步行可達的範圍內並肩而立。本提案主張，進入這些資產最直接的通道，不是文字解說牌，而是旅客自身的感官體驗——<strong>一塊紅磚的觸感、一縷檀香的氣息、一聲蒸汽火車的轟鳴</strong>，都能比任何說明文字更有效地讓人感知到這裡曾經發生過什麼。</p>
+    </div>
+    <div class="callout">核心主張：把淡水的歷史資產轉化為「感官任務關卡」——每一塊磚牆、每一陣海風、每一道食物，都是一個有待以身體解鎖的歷史謎題。感官體驗，是進入城市記憶最直接的通道。</div>
+    <div class="three-layers">
+      <div class="layer-card"><div class="layer-num">一</div><div class="layer-title">感知現場</div><div class="layer-desc">所有任務皆要求旅客於真實現場調動感官——觸摸紅磚、辨認氣味、聆聽聲景、品嚐食物——讓身體先於理智接觸歷史。</div></div>
+      <div class="layer-card"><div class="layer-num">二</div><div class="layer-title">互動解謎</div><div class="layer-desc">透過 App 的遊戲化任務機制（AR 掃描、感官選擇題、陀螺儀互動、歷史排序），將感官體驗轉化為歷史知識的主動習得。</div></div>
+      <div class="layer-card"><div class="layer-num">三</div><div class="layer-title">記憶生成</div><div class="layer-desc">每完成一個任務，旅客獲得一份感官記憶碎片（聲音明信片、感官日記、照片），集結成專屬的淡水感官記憶集。</div></div>
+    </div>
+    <div class="sense-section-title">五感 × 淡水：你的身體會記住什麼</div>
+    <div class="sense-cards">
+      <div class="sense-card s-sight"><div class="sense-label"><span class="sense-zh">視覺</span><span class="sense-en">Sight</span></div><div class="sense-body"><p>荷蘭稜堡的紅褐石牆、英式殖民地的白色迴廊、橫跨河口的單塔斜張橋——三個時代的建築語彙並置在步行可達的範圍內，形成密度極高的視覺歷史切面。</p><p>本提案透過 AR 旗幟疊影、建築元素掃描解碼與視覺欺騙拍照等任務，引導旅客以鏡頭重新閱讀淡水的建築時代語彙，理解每一棟建物背後的政權脈絡。</p></div></div>
+      <div class="sense-card s-sound"><div class="sense-label"><span class="sense-zh">聽覺</span><span class="sense-en">Sound</span></div><div class="sense-body"><p>淡水曾是台灣最繁忙的商港之一，然而那個時代的聲景——蒸汽引擎轟鳴、鐵錨入水聲、商賈叫賣聲——早已消失在今日的觀光人潮之中。</p><p>本提案以聲音作為時間的媒介：捷運站蒸汽火車聲解鎖黑白歷史影像、戀愛巷錄音生成個人聲音明信片、海關碼頭號角計數重現 19 世紀商港現場感。</p></div></div>
+      <div class="sense-card s-smell"><div class="sense-label"><span class="sense-zh">嗅覺</span><span class="sense-en">Smell</span></div><div class="sense-body"><p>清水巖的檀香與線香氣息、漁人碼頭混合著海風鹽分與柴油機油的空氣、老街鐵蛋的八角滷香——三種截然不同的氣味在老街沿線並存，構成淡水獨有的「氣味身份證」。</p><p>宗教信仰的氣味與港口產業的氣味在此交織，正是淡水作為信仰聚落與貿易港口兩種身份相互疊合的嗅覺印記。</p></div></div>
+      <div class="sense-card s-taste"><div class="sense-label"><span class="sense-zh">味覺</span><span class="sense-en">Taste</span></div><div class="sense-body"><p>阿給的名稱源自日文「油豆腐」的部分音譯，魚酥是港口漁業文化的飲食延伸，黑殿排骨飯則是外省老兵在異鄉複製家鄉滋味的庶民記憶——每一道食物背後都是一段歷史。</p><p>本提案設計阿給食材排序解謎、魚酥折斷分貝偵測、黑殿歷史典故問答等任務，讓每一口食物成為進入歷史敘事的味覺入口。</p></div></div>
+      <div class="sense-card s-touch"><div class="sense-label"><span class="sense-zh">觸覺</span><span class="sense-en">Touch</span></div><div class="sense-body"><p>建築材料是時代最直接的物質遺留。殼牌倉庫的工業鑄鐵、真理大學的糯米石灰牆（清代傳統工法）、滬尾礮台的鐵水泥（19 世紀英商建材）——三種跨越不同時代的材料手感，代表三段截然不同的建築工藝脈絡。</p><p>本提案要求旅客閉上眼睛，以觸感辨識建材、猜測工法年代，用手掌感受一部沒有文字的建材歷史。</p></div></div>
+    </div>
+    <div class="callout">感官設計原則：每一個任務的設計順序均遵循「感知在前，知識在後」——旅客先以身體接觸現場，再透過 App 的互動機制完成歷史知識的主動連結。知識不被宣告，而是被發現。</div>
+    <div class="slogan-block"><div class="slogan-zh"><span>百年</span>淡水，聽見<span>時光低語</span></div><div class="slogan-en">A Century of Tamsui — Hear the Whisper of Time</div></div>
+  </div>
+
+  <div id="tab-route-a" class="route-panel route-a">
+    <div class="route-header">
+      <div class="route-badge"><span class="badge-letter">A</span><span class="badge-sub">ROUTE</span></div>
+      <div><div class="route-title">淡水捷運站沿線</div><div class="route-title-en">Along the MRT — Old Town Layer by Layer</div><div class="route-meta"><span class="meta-chip">10 個任務關卡</span><span class="meta-chip">步行路線</span><span class="meta-chip">約 3–4 小時</span><span class="meta-chip">五感全覆蓋</span></div></div>
+    </div>
+    <div class="sense-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#8B1A1A"></span>視覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3D4A6B"></span>聽覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1D4A4A"></span>嗅覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#2A4A1D"></span>味覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#6B4A10"></span>觸覺</span>
+    </div>
+    <div id="missions-a"></div>
+  </div>
+
+  <div id="tab-route-b" class="route-panel route-b">
+    <div class="route-header">
+      <div class="route-badge"><span class="badge-letter">B</span><span class="badge-sub">ROUTE</span></div>
+      <div><div class="route-title">八里渡船線</div><div class="route-title-en">Ferry to Bali — Across the River, Through Time</div><div class="route-meta"><span class="meta-chip">8 個任務關卡</span><span class="meta-chip">渡船＋步行</span><span class="meta-chip">約 3–5 小時</span><span class="meta-chip">跨河體驗</span></div></div>
+    </div>
+    <div class="sense-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#8B1A1A"></span>視覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3D4A6B"></span>聽覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#2A4A1D"></span>味覺</span>
+    </div>
+    <div id="missions-b"></div>
+  </div>
+
+  <div id="tab-route-c" class="route-panel route-c">
+    <div class="route-header">
+      <div class="route-badge"><span class="badge-letter">C</span><span class="badge-sub">ROUTE</span></div>
+      <div><div class="route-title">淡江大橋沿線</div><div class="route-title-en">Danjiang Bridge — New Landmark, Old Echoes</div><div class="route-meta"><span class="meta-chip">9 個任務關卡</span><span class="meta-chip">單車友善</span><span class="meta-chip">約 3–4 小時</span><span class="meta-chip">新舊對話</span></div></div>
+    </div>
+    <div class="sense-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#8B1A1A"></span>視覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1D4A4A"></span>嗅覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#2A4A1D"></span>味覺</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#6B4A10"></span>觸覺</span>
+    </div>
+    <div id="missions-c"></div>
+  </div>
+
+</div>
+
+<script>
+const senseMap={
+  '視覺':{cls:'ms-sight',zh:'視覺',en:'Sight'},
+  '聽覺':{cls:'ms-sound',zh:'聽覺',en:'Sound'},
+  '嗅覺':{cls:'ms-smell',zh:'嗅覺',en:'Smell'},
+  '味覺':{cls:'ms-taste',zh:'味覺',en:'Taste'},
+  '觸覺':{cls:'ms-touch',zh:'觸覺',en:'Touch'},
+};
+
+function renderMissions(id,missions){
+  document.getElementById(id).innerHTML=missions.map((m,i)=>{
+    const s=senseMap[m.sense];
+    return`<div class="mission-card">
+      <div class="mission-sense ${s.cls}">
+        <span class="sense-icon-text">${s.zh}</span>
+        <span class="sense-icon-en">${s.en}</span>
+      </div>
+      <div class="mission-body">
+        <div class="mission-step">任務 ${String(i+1).padStart(2,'0')} · Mission ${String(i+1).padStart(2,'0')}</div>
+        <div class="mission-location">${m.place}</div>
+        <div class="mission-location-en">${m.placeEn}</div>
+        <div class="mission-task">${m.task}</div>
+        ${m.answer?`<div class="mission-answer"><strong>Answer · 解鎖</strong>${m.answer}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+const missionsA=[
+  {place:'淡水捷運站',placeEn:'Tamsui MRT Station',sense:'聽覺',task:'對準火車頭後，點擊螢幕上的汽笛按鈕，App 播放昔日台鐵蒸汽火車進站的聲音，黑白畫面才會完整顯示——用聲音開啟記憶之旅，正式宣告「淡水故事尋旅」啟程。',answer:'聲音解鎖黑白歷史影像，感受百年蒸汽時代的震撼'},
+  {place:'殼牌倉庫',placeEn:'Shell Warehouse',sense:'觸覺',task:'App 開啟「材質掃描模式」，依序觸摸並對準：①紅磚縫隙 ②鐵管截面 ③木造樑柱。每掃描一種材質，App 辨識後顯示該材料在 1900 年代的工業用途說明。',answer:'三種建材對應三段 1900s 工業歷史，全部解鎖完成任務'},
+  {place:'淡水清水巖',placeEn:'Qingshui Cliff Temple',sense:'嗅覺',task:'走近正殿，閉上眼感受空氣中混合的氣味。這種代表「心靈寄託」與「平靜」的氣味標籤是什麼？\n(A) 檀香與線香　(B) 海風鹽味　(C) 鐵蛋香氣',answer:'(A) 檀香與線香'},
+  {place:'重建街戀愛巷',placeEn:"Lovers' Lane, Chongjian St.",sense:'聽覺',task:'App 開啟錄音模式，錄下一段 10 秒的專屬聲景。錄完後 App 自動將聲音波形轉化為視覺圖案，生成一張獨一無二的聲音明信片——每個人採集的聲音不同，明信片圖案也不同。',answer:null},
+  {place:'淡水 3D 意象彩繪階梯',placeEn:'3D Mural Staircase',sense:'視覺',task:'在 App 取景框中找到「唯一正確」的觀測點，使階梯圖案完美合體，拍下一張視覺欺騙的趣味照片。',answer:null},
+  {place:'淡水老牌阿給創始店',placeEn:'Original A-Gei Shop',sense:'味覺',task:'在螢幕上依正確順序點選食材，還原阿給的製作順序。',answer:'油豆腐（挖空）→ 冬粉（填入）→ 魚漿（封口）→ 甜辣醬（淋上）'},
+  {place:'小白宮',placeEn:'Little White House',sense:'視覺',task:'App 提示用鏡頭依序掃描三個建築元素：①白色外牆 ②迴廊拱門 ③屋頂煙囪。每掃描一個，App 解析該元素背後的設計邏輯。',answer:'白色牆＝英式殖民美學 · 拱門＝熱帶通風 · 煙囪＝英國習慣卻在台灣幾乎用不上'},
+  {place:'真理大學',placeEn:'Aletheia University',sense:'觸覺',task:'閉上眼觸摸牆縫，這種粗糙且堅硬的觸感，是哪種天然材料？',answer:'糯米、黑糖與石灰的混合——清代傳統工法，歷經百年仍堅固如初'},
+  {place:'紅毛城',placeEn:'Fort San Domingo',sense:'視覺',task:'用 App 掃描紅毛城城門，螢幕上將疊加荷蘭、西班牙、英國三個時代的旗幟動畫。這座城堡換過幾任主人？請數出旗幟變換的次數後輸入答案。',answer:'西班牙→荷蘭→英國→中華民國，四百年政權更替在一面城牆上凝縮'},
+  {place:'淡水海關碼頭',placeEn:'Tamsui Customs Wharf',sense:'聽覺',task:'播放一段模擬 19 世紀的碼頭音效，請問你聽到了幾聲代表商船入港的號角聲？依現場實際數量設定答案。',answer:'19 世紀商港現場感，連結百年歷史疊影'},
+];
+
+const missionsB=[
+  {place:'十三行博物館',placeEn:'Museum of Shihsanhang Culture',sense:'視覺',task:'找到指定的人面陶罐展品。App 畫面會出現碎裂的陶罐，遊客必須利用手機的陀螺儀來平衡碎片，並用手指塗抹黏著劑。如果手太抖，陶罐會「碰」一聲碎掉並伴隨強烈震動！成功後陶罐噴出金幣特效。',answer:'手穩才能成功，喚醒距今 1800 年的史前文化記憶'},
+  {place:'八里十三行文化公園',placeEn:'Shihsanhang Culture Park',sense:'視覺',task:'在公園大草坪尋找 AR 標記點。拿起手機對準天空，你會看到數千年前的大坌坑人正在對你射箭！必須透過移動身體躲避虛擬箭矢，並在倒數結束前捕捉一張與史前獵人同框的合照。',answer:'身體就是控制器，穿越時空與史前人同框留念'},
+  {place:'挖子尾自然生態保留區',placeEn:'Wazihwei Nature Reserve',sense:'視覺',task:'找到並拍下 App 指定的紅樹林沼澤地特有生物。完成所有生物拍攝後上傳 App 即可完成任務。',answer:'記錄淡水河口獨有的紅樹林生態系，成為生態守護者'},
+  {place:'八里渡船老街',placeEn:'Bali Ferry Old Street',sense:'味覺',task:'找到八里特有美食雙胞胎、烤玉米及其他在地小吃，在 App 上描述美食的味道，符合任務描述即可過關。',answer:'用文字捕捉八里獨有的飲食記憶，每個人的描述都不同'},
+  {place:'淡水老街｜魚酥',placeEn:'Tamsui Old Street — Fish Cracker',sense:'味覺',task:'到老街尋找在地魚酥。要求遊客拿起一片魚酥，在手機麥克風旁折斷它。App 偵測折斷瞬間的分貝，偵測到聲音後螢幕炸出浪花動畫。',answer:'折斷的瞬間分貝，觸發屬於你的浪花時刻'},
+  {place:'淡水日本警官宿舍',placeEn:"Japanese Officer's Dormitory",sense:'視覺',task:'請觀察宿舍後方的鋼筋混凝土建築（防空洞），它的位置是為了利用哪種自然地形達成隱蔽效果？\n(A) 填海造陸的空地　(B) 隆起的山坡岩壁',answer:'(B) 隆起的山坡岩壁——日治時期防禦工事的選址邏輯'},
+  {place:'淡水街長多田榮吉故居',placeEn:'Former Residence of Mayor Tada Eikichi',sense:'視覺',task:'遊客坐在廊道上，移動手機調整角度，讓眼前的觀音山實景與螢幕上的歷史草圖重疊。當線條吻合時，螢幕會從黑白線稿漸變成當年的復古色彩。',answer:'實景與歷史圖稿合而為一，親眼目睹時間的褶皺'},
+  {place:'時光樹影 Memory',placeEn:'Memory — Former Harbour Administration',sense:'聽覺',task:'App 播放一段模擬的船隻鳴笛與海關廣播聲。這棟建築前身是「港務局宿舍」，請問當時這裡最主要的日常聲響與何者最有關？\n(A) 導引進出港口的船隻與船務紀錄　(B) 訓練警察部隊的號角聲',answer:'(A) 導引進出港口的船隻與船務紀錄'},
+];
+
+const missionsC=[
+  {place:'淡江大橋',placeEn:'Danjiang Bridge',sense:'視覺',task:'用 App 對準淡江大橋的主塔，螢幕疊加橋梁剖面結構圖，顯示其「單塔不對稱斜張橋」的設計特色。請問它連接的兩岸是？\n(A) 淡水與八里　(B) 淡水與竹圍　(C) 淡水與關渡',answer:'(A) 淡水與八里——台灣首座行人單車專用跨河大橋'},
+  {place:'淡水漁人碼頭',placeEn:"Fisherman's Wharf",sense:'嗅覺',task:'站在碼頭邊，深呼吸感受空氣中混合的氣味層次——海風鹹味、柴油機油、漁獲腥味。這三種氣味共同構成了漁港的「氣味身份證」。請問你最明顯聞到的是哪一層？輸入 App 記錄感官日記。',answer:null},
+  {place:'沙崙海灘',placeEn:'Shalun Beach',sense:'觸覺',task:'比較乾沙與濕沙的觸感，請問哪種觸感最可能成為 1884 年法軍登陸時的地理障礙？',answer:'濕軟泥沙——延緩行進速度，成為天然防禦屏障'},
+  {place:'滬尾砲台公園',placeEn:'Huwei Fort Park',sense:'視覺',task:'沿著步道與草坪邊緣尋找，找到隱藏在樹叢間、編號「北47-006」的廢棄國軍水泥碉堡掩體。走近觀察它的「方形射口（槍眼）」，其外觀顏色是？\n(A) 水泥灰色　(B) 磚紅色',answer:'(A) 水泥灰色——從清代礮台到國軍碉堡，同一塊土地上的兩層防衛歷史'},
+  {place:'滬尾礮臺',placeEn:'Huwei Fort (Qing Dynasty)',sense:'觸覺',task:'觸摸礮台內部的牆面，這種冰涼且略帶濕潤的觸感，顯示其主要建材為何？',answer:'鐵水泥（Iron Cement）——19 世紀末英商工業建材，劉銘傳軍事工事的核心用料'},
+  {place:'雲門舞集',placeEn:'Cloud Gate Theatre',sense:'觸覺',task:'遊客需要將手機面向自己（或請旅伴幫忙拍攝），模仿螢幕上的舞者姿勢並維持 3 秒鐘。',answer:'用肢體感受當代藝術，讓身體成為感官體驗的最後媒介'},
+  {place:'益品書屋',placeEn:'Yipin Bookstore',sense:'視覺',task:'走進圓弧形書塔，在近 4000 本精裝圖文書海中，用眼睛尋找一張最震撼你視覺的書籍封面，於 App 上分享你選的書本以及書屋閱讀體驗感想。',answer:'沒有標準答案，你的美學判斷就是任務的完成'},
+  {place:'黑殿飯店（創始店）',placeEn:'Black Restaurant — The Original',sense:'味覺',task:'這家店當年因為在外牆塗了什麼便宜的原料防蟲，才被學生戲稱為「黑店」？\n(A) 墨水　(B) 木炭粉　(C) 黑色柏油',answer:'(C) 黑色柏油——克難木板搭棚塗柏油防蟲，飄香半世紀眷村家鄉味的由來'},
+  {place:'黑殿飯店（食後任務）',placeEn:'Black Restaurant — Closing Mission',sense:'味覺',task:'開啟 App 上的感官日記，拍照並分享記錄你在店裡吃的美食品項，完成路線 C 的最終任務。',answer:'用一頓飯為這趟感官之旅畫上句點，留下屬於你的城市記憶'},
+];
+
+renderMissions('missions-a',missionsA);
+renderMissions('missions-b',missionsB);
+renderMissions('missions-c',missionsC);
+
+const panelMap={concept:'tab-concept','route-a':'tab-route-a','route-b':'tab-route-b','route-c':'tab-route-c'};
+const tabOrder=['concept','route-a','route-b','route-c'];
+
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===tabOrder.indexOf(id)));
+  Object.values(panelMap).forEach(p=>document.getElementById(p).classList.remove('active'));
+  document.getElementById(panelMap[id]).classList.add('active');
+}
+</script>
+</body>
+</html>
